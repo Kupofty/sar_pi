@@ -924,11 +924,11 @@ CfgDlgDef::CfgDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_staticText68->Wrap( -1 );
 	bSizer39->Add( m_staticText68, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_radioBtn1 = new wxRadioButton( this, wxID_ANY, _("Default"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer39->Add( m_radioBtn1, 0, wxALIGN_CENTER|wxALL, 5 );
+	m_radioBtn_defaultPath = new wxRadioButton( this, wxID_ANY, _("Default"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer39->Add( m_radioBtn_defaultPath, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_radioBtn2 = new wxRadioButton( this, wxID_ANY, _("Custom"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer39->Add( m_radioBtn2, 0, wxALIGN_CENTER|wxALL, 5 );
+	m_radioBtn_customPath = new wxRadioButton( this, wxID_ANY, _("Custom"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer39->Add( m_radioBtn_customPath, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
 	bSizer39->Add( 0, 0, 1, wxEXPAND, 5 );
@@ -961,7 +961,7 @@ CfgDlgDef::CfgDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_sdbSizer_OkCancel->AddButton( m_sdbSizer_OkCancelCancel );
 	m_sdbSizer_OkCancel->Realize();
 
-	bSizer_Settings->Add( m_sdbSizer_OkCancel, 0, wxALL|wxEXPAND, 5 );
+	bSizer_Settings->Add( m_sdbSizer_OkCancel, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
 	this->SetSizer( bSizer_Settings );

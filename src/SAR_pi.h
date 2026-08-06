@@ -99,7 +99,7 @@ public:
       double GetCursorLon(void) {return m_cursor_lon;}
       double GetCursorLat(void) {return m_cursor_lat;}
 
-	  int m_position_menu_id;
+      int m_position_menu_id;
       wxBitmap m_panel_bitmap;
 
 private:
@@ -115,6 +115,8 @@ private:
       double            m_ship_lon, m_ship_lat, m_cursor_lon, m_cursor_lat;
       bool              m_show_sar_icon;
       bool		m_show_sar;
+      wxString          m_custom_folder_path;
+      bool              m_use_custom_path;
 };
 
 #endif

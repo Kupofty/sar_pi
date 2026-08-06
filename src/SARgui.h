@@ -217,10 +217,7 @@ class CfgDlgDef : public wxDialog
 
 	protected:
 		wxStaticText* m_staticText68;
-		wxRadioButton* m_radioBtn1;
-		wxRadioButton* m_radioBtn2;
 		wxStaticText* m_staticText67;
-		wxTextCtrl* m_textCtrl_folderPath;
 		wxButton* m_button_browseFolder;
 		wxStdDialogButtonSizer* m_sdbSizer_OkCancel;
 		wxButton* m_sdbSizer_OkCancelOK;
@@ -231,6 +228,9 @@ class CfgDlgDef : public wxDialog
 
 
 	public:
+		wxRadioButton* m_radioBtn_defaultPath;
+		wxRadioButton* m_radioBtn_customPath;
+		wxTextCtrl* m_textCtrl_folderPath;
 
 		CfgDlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("SAR settings"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
 

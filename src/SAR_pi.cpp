@@ -70,18 +70,11 @@ SAR_pi::SAR_pi(void *ppimgr)
   m_show_sar = false;
 }
 
-SAR_pi::~SAR_pi() {
+SAR_pi::~SAR_pi()
+{
+  SaveConfig();
+
   delete _img_rescue;
-
-  if (m_pDialog) {
-    wxFileConfig *pConf = GetOCPNConfigObject();
-
-    if (pConf) {
-      pConf->SetPath(_T ( "/Settings/SAR_pi" ));
-      pConf->Write(_T ( "DialogPosX" ), m_route_dialog_x);
-      pConf->Write(_T ( "DialogPosY" ), m_route_dialog_y);
-    }
-  }
 }
 
 int SAR_pi::Init(void) {
@@ -184,6 +177,8 @@ bool SAR_pi::LoadConfig(void) {
 
     m_route_dialog_x = pConf->Read(_T ( "DialogPosX" ), 20L);
     m_route_dialog_y = pConf->Read(_T ( "DialogPosY" ), 20L);
+    m_custom_folder_path = pConf->Read(_T ( "CustomFolderPath" ), "");
+    m_use_custom_path = pConf->Read(_T ( "UseCustomFolderPath" ), false);
 
     if ((m_route_dialog_x < 0) || (m_route_dialog_x > m_display_width))
       m_route_dialog_x = 5;
@@ -197,13 +192,17 @@ bool SAR_pi::LoadConfig(void) {
 bool SAR_pi::SaveConfig(void) {
   wxFileConfig *pConf = (wxFileConfig *)m_pconfig;
 
-  if (pConf) {
+  if (pConf)
+  {
     pConf->SetPath(_T ( "/Settings/SAR_pi" ));
     pConf->Write("ShowSARIcon", m_show_sar_icon);
     pConf->Write(_T ( "DialogPosX" ), m_route_dialog_x);
     pConf->Write(_T ( "DialogPosY" ), m_route_dialog_y);
+    pConf->Write(_T ( "CustomFolderPath" ), m_custom_folder_path);
+    pConf->Write(_T ( "UseCustomFolderPath" ), m_use_custom_path);
     return true;
-  } else
+  }
+  else
     return false;
 }
 
@@ -259,13 +258,20 @@ void SAR_pi::OnToolbarToolCallback(int id) {
 }
 
 void SAR_pi::ShowPreferencesDialog(wxWindow *parent) {
-  CfgDlg *dialog = new CfgDlg(parent, wxID_ANY, _("Route Preferences"),
+  CfgDlg *dialog = new CfgDlg(parent, wxID_ANY, _("SAR Preferences"),
                               wxPoint(m_route_dialog_x, m_route_dialog_y),
                               wxDefaultSize, wxDEFAULT_DIALOG_STYLE);
+
   dialog->Fit();
   DimeWindow(dialog);
 
+  dialog->m_textCtrl_folderPath->SetValue(m_custom_folder_path);
+  dialog->m_radioBtn_customPath->SetValue(m_use_custom_path);
+
+  //Update settings
   if (dialog->ShowModal() == wxID_OK) {
+    m_use_custom_path = dialog->m_radioBtn_customPath->GetValue();
+    m_custom_folder_path = dialog->m_textCtrl_folderPath->GetValue();
     SaveConfig();
   }
 

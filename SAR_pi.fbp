@@ -8913,26 +8913,26 @@
           <property name="border">5</property>
           <property name="flag">wxEXPAND</property>
           <property name="proportion">1</property>
-          <object class="wxBoxSizer" expanded="true">
+          <object class="wxBoxSizer" expanded="false">
             <property name="minimum_size"></property>
             <property name="name">bSizer39</property>
             <property name="orient">wxHORIZONTAL</property>
             <property name="permission">none</property>
-            <object class="sizeritem" expanded="true">
+            <object class="sizeritem" expanded="false">
               <property name="border">5</property>
               <property name="flag">wxEXPAND</property>
               <property name="proportion">1</property>
-              <object class="spacer" expanded="true">
+              <object class="spacer" expanded="false">
                 <property name="height">0</property>
                 <property name="permission">protected</property>
                 <property name="width">0</property>
               </object>
             </object>
-            <object class="sizeritem" expanded="true">
+            <object class="sizeritem" expanded="false">
               <property name="border">5</property>
               <property name="flag">wxALIGN_CENTER|wxALL</property>
               <property name="proportion">0</property>
-              <object class="wxStaticText" expanded="true">
+              <object class="wxStaticText" expanded="false">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
                 <property name="RightDockable">1</property>
@@ -8990,11 +8990,11 @@
                 <property name="wrap">-1</property>
               </object>
             </object>
-            <object class="sizeritem" expanded="true">
+            <object class="sizeritem" expanded="false">
               <property name="border">5</property>
               <property name="flag">wxALIGN_CENTER|wxALL</property>
               <property name="proportion">0</property>
-              <object class="wxRadioButton" expanded="true">
+              <object class="wxRadioButton" expanded="false">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
                 <property name="RightDockable">1</property>
@@ -9031,11 +9031,11 @@
                 <property name="minimize_button">0</property>
                 <property name="minimum_size"></property>
                 <property name="moveable">1</property>
-                <property name="name">m_radioBtn1</property>
+                <property name="name">m_radioBtn_defaultPath</property>
                 <property name="pane_border">1</property>
                 <property name="pane_position"></property>
                 <property name="pane_size"></property>
-                <property name="permission">protected</property>
+                <property name="permission">public</property>
                 <property name="pin_button">1</property>
                 <property name="pos"></property>
                 <property name="resize">Resizable</property>
@@ -9055,11 +9055,11 @@
                 <property name="window_style"></property>
               </object>
             </object>
-            <object class="sizeritem" expanded="true">
+            <object class="sizeritem" expanded="false">
               <property name="border">5</property>
               <property name="flag">wxALIGN_CENTER|wxALL</property>
               <property name="proportion">0</property>
-              <object class="wxRadioButton" expanded="true">
+              <object class="wxRadioButton" expanded="false">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
                 <property name="RightDockable">1</property>
@@ -9096,11 +9096,11 @@
                 <property name="minimize_button">0</property>
                 <property name="minimum_size"></property>
                 <property name="moveable">1</property>
-                <property name="name">m_radioBtn2</property>
+                <property name="name">m_radioBtn_customPath</property>
                 <property name="pane_border">1</property>
                 <property name="pane_position"></property>
                 <property name="pane_size"></property>
-                <property name="permission">protected</property>
+                <property name="permission">public</property>
                 <property name="pin_button">1</property>
                 <property name="pos"></property>
                 <property name="resize">Resizable</property>
@@ -9120,11 +9120,11 @@
                 <property name="window_style"></property>
               </object>
             </object>
-            <object class="sizeritem" expanded="true">
+            <object class="sizeritem" expanded="false">
               <property name="border">5</property>
               <property name="flag">wxEXPAND</property>
               <property name="proportion">1</property>
-              <object class="spacer" expanded="true">
+              <object class="spacer" expanded="false">
                 <property name="height">0</property>
                 <property name="permission">protected</property>
                 <property name="width">0</property>
@@ -9248,7 +9248,7 @@
                 <property name="pane_border">1</property>
                 <property name="pane_position"></property>
                 <property name="pane_size"></property>
-                <property name="permission">protected</property>
+                <property name="permission">public</property>
                 <property name="pin_button">1</property>
                 <property name="pos"></property>
                 <property name="resize">Resizable</property>
@@ -9347,7 +9347,7 @@
         </object>
         <object class="sizeritem" expanded="false">
           <property name="border">5</property>
-          <property name="flag">wxALL|wxEXPAND</property>
+          <property name="flag">wxALIGN_CENTER|wxALL</property>
           <property name="proportion">0</property>
           <object class="wxStdDialogButtonSizer" expanded="false">
             <property name="Apply">0</property>
