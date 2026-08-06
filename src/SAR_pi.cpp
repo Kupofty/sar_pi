@@ -78,11 +78,8 @@ SAR_pi::~SAR_pi() {
 
     if (pConf) {
       pConf->SetPath(_T ( "/Settings/SAR_pi" ));
-      pConf->Write(_T ( "Opacity" ), m_iOpacity);
       pConf->Write(_T ( "DialogPosX" ), m_route_dialog_x);
       pConf->Write(_T ( "DialogPosY" ), m_route_dialog_y);
-      pConf->Write(_T ( "CaptureCursor" ), m_bCaptureCursor);
-      pConf->Write(_T ( "CaptureShip" ), m_bCaptureShip);
     }
   }
 }
@@ -131,7 +128,7 @@ int SAR_pi::Init(void) {
   m_pDialog = NULL;
 
   return (WANTS_CURSOR_LATLON | WANTS_TOOLBAR_CALLBACK | INSTALLS_TOOLBAR_TOOL |
-          WANTS_NMEA_EVENTS | WANTS_CONFIG);
+          WANTS_NMEA_EVENTS | WANTS_CONFIG | WANTS_PREFERENCES);
 }
 
 bool SAR_pi::DeInit(void) {
@@ -183,13 +180,10 @@ bool SAR_pi::LoadConfig(void) {
 
   if (pConf) {
     pConf->SetPath(_T( "/Settings/SAR_pi" ));
-    pConf->Read(_T ( "Opacity" ), &m_iOpacity, 255);
     pConf->Read("ShowSARIcon", &m_show_sar_icon, true);
-    // pConf->Read dialog->m_cpConnectorColor->SetColour(m_sConnectorColor);
+
     m_route_dialog_x = pConf->Read(_T ( "DialogPosX" ), 20L);
     m_route_dialog_y = pConf->Read(_T ( "DialogPosY" ), 20L);
-    m_bCaptureCursor = pConf->Read(_T ( "CaptureCursor" ), true);
-    m_bCaptureShip = pConf->Read(_T ( "CaptureShip" ), true);
 
     if ((m_route_dialog_x < 0) || (m_route_dialog_x > m_display_width))
       m_route_dialog_x = 5;
@@ -205,12 +199,9 @@ bool SAR_pi::SaveConfig(void) {
 
   if (pConf) {
     pConf->SetPath(_T ( "/Settings/SAR_pi" ));
-    pConf->Write(_T ( "Opacity" ), m_iOpacity);
     pConf->Write("ShowSARIcon", m_show_sar_icon);
     pConf->Write(_T ( "DialogPosX" ), m_route_dialog_x);
     pConf->Write(_T ( "DialogPosY" ), m_route_dialog_y);
-    pConf->Write(_T ( "CaptureCursor" ), m_bCaptureCursor);
-    pConf->Write(_T ( "CaptureShip" ), m_bCaptureShip);
     return true;
   } else
     return false;
@@ -272,18 +263,12 @@ void SAR_pi::ShowPreferencesDialog(wxWindow *parent) {
                               wxPoint(m_route_dialog_x, m_route_dialog_y),
                               wxDefaultSize, wxDEFAULT_DIALOG_STYLE);
   dialog->Fit();
-  wxColour cl;
   DimeWindow(dialog);
-  dialog->m_sOpacity->SetValue(m_iOpacity);
-  dialog->m_CaptureCursor->SetValue(m_bCaptureCursor);
-  dialog->m_CaptureShip->SetValue(m_bCaptureShip);
 
   if (dialog->ShowModal() == wxID_OK) {
-    m_iOpacity = dialog->m_sOpacity->GetValue();
-    m_bCaptureCursor = dialog->m_CaptureCursor->GetValue();
-    m_bCaptureShip = dialog->m_CaptureCursor->GetValue();
     SaveConfig();
   }
+
   delete dialog;
   dialog = NULL;
 }

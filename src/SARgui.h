@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6-dirty)
+// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO *NOT* EDIT THIS FILE!
@@ -30,7 +30,7 @@
 #include <wx/button.h>
 #include <wx/checkbox.h>
 #include <wx/dialog.h>
-#include <wx/slider.h>
+#include <wx/radiobut.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -216,17 +216,23 @@ class CfgDlgDef : public wxDialog
 	private:
 
 	protected:
-		wxStaticText* m_staticText17;
+		wxStaticText* m_staticText68;
+		wxRadioButton* m_radioBtn1;
+		wxRadioButton* m_radioBtn2;
+		wxStaticText* m_staticText67;
+		wxTextCtrl* m_textCtrl_folderPath;
+		wxButton* m_button_browseFolder;
 		wxStdDialogButtonSizer* m_sdbSizer_OkCancel;
 		wxButton* m_sdbSizer_OkCancelOK;
 		wxButton* m_sdbSizer_OkCancelCancel;
 
-	public:
-		wxSlider* m_sOpacity;
-		wxCheckBox* m_CaptureShip;
-		wxCheckBox* m_CaptureCursor;
+		// Virtual event handlers, override them in your derived class
+		virtual void OnButtonClick_BrowseFolderPath( wxCommandEvent& event ) { event.Skip(); }
 
-		CfgDlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("SAR preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
+
+	public:
+
+		CfgDlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("SAR settings"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
 
 		~CfgDlgDef();
 

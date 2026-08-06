@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6-dirty)
+// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO *NOT* EDIT THIS FILE!
@@ -540,7 +540,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panel_Degrees->SetSizer( bSizer_Dddd );
 	m_panel_Degrees->Layout();
 	bSizer_Dddd->Fit( m_panel_Degrees );
-	m_notebook_CSP->AddPage( m_panel_Degrees, _("D.ddd"), true );
+	m_notebook_CSP->AddPage( m_panel_Degrees, _("D.ddd"), false );
 	m_panel_DegreesMinutes = new wxPanel( m_notebook_CSP, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer4011;
 	bSizer4011 = new wxBoxSizer( wxVERTICAL );
@@ -714,7 +714,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panel_DegreesMinutesSeconds->SetSizer( bSizer401 );
 	m_panel_DegreesMinutesSeconds->Layout();
 	bSizer401->Fit( m_panel_DegreesMinutesSeconds );
-	m_notebook_CSP->AddPage( m_panel_DegreesMinutesSeconds, _("D MM SS"), false );
+	m_notebook_CSP->AddPage( m_panel_DegreesMinutesSeconds, _("D MM SS"), true );
 
 	sbSizer_DatumCSP->Add( m_notebook_CSP, 1, wxEXPAND, 5 );
 
@@ -914,36 +914,45 @@ CfgDlgDef::CfgDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	wxBoxSizer* bSizer_Settings;
 	bSizer_Settings = new wxBoxSizer( wxVERTICAL );
 
-	wxStaticBoxSizer* sbSizer_GeneralSettings;
-	sbSizer_GeneralSettings = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("General settings") ), wxHORIZONTAL );
-
-	m_staticText17 = new wxStaticText( sbSizer_GeneralSettings->GetStaticBox(), wxID_ANY, _("Opacity"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText17->Wrap( -1 );
-	sbSizer_GeneralSettings->Add( m_staticText17, 0, wxALIGN_CENTER|wxALL, 5 );
-
-	m_sOpacity = new wxSlider( sbSizer_GeneralSettings->GetStaticBox(), wxID_ANY, 255, 0, 255, wxDefaultPosition, wxDefaultSize, wxSL_HORIZONTAL );
-	sbSizer_GeneralSettings->Add( m_sOpacity, 0, wxALIGN_CENTER|wxALL|wxEXPAND, 5 );
+	wxBoxSizer* bSizer39;
+	bSizer39 = new wxBoxSizer( wxHORIZONTAL );
 
 
-	bSizer_Settings->Add( sbSizer_GeneralSettings, 0, wxALL|wxEXPAND, 5 );
+	bSizer39->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	wxStaticBoxSizer* sbSizer_CpuSettings;
-	sbSizer_CpuSettings = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("CPU saving settings") ), wxVERTICAL );
+	m_staticText68 = new wxStaticText( this, wxID_ANY, _("Open recording folder:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText68->Wrap( -1 );
+	bSizer39->Add( m_staticText68, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_CaptureShip = new wxCheckBox( sbSizer_CpuSettings->GetStaticBox(), wxID_ANY, _("Capture Ship Position"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_CaptureShip->SetValue(true);
-	m_CaptureShip->SetToolTip( _("Leave ticked, so you can use ship's position") );
+	m_radioBtn1 = new wxRadioButton( this, wxID_ANY, _("Default"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer39->Add( m_radioBtn1, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	sbSizer_CpuSettings->Add( m_CaptureShip, 0, wxALL, 5 );
-
-	m_CaptureCursor = new wxCheckBox( sbSizer_CpuSettings->GetStaticBox(), wxID_ANY, _("Capture Cursor Position"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_CaptureCursor->SetValue(true);
-	m_CaptureCursor->SetToolTip( _("Leave ticked, so that you can use cursor position.") );
-
-	sbSizer_CpuSettings->Add( m_CaptureCursor, 0, wxALL, 5 );
+	m_radioBtn2 = new wxRadioButton( this, wxID_ANY, _("Custom"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer39->Add( m_radioBtn2, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	bSizer_Settings->Add( sbSizer_CpuSettings, 0, wxALL|wxEXPAND, 5 );
+	bSizer39->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer_Settings->Add( bSizer39, 1, wxEXPAND, 5 );
+
+	wxBoxSizer* bSizer35;
+	bSizer35 = new wxBoxSizer( wxHORIZONTAL );
+
+	m_staticText67 = new wxStaticText( this, wxID_ANY, _("Custom path:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText67->Wrap( -1 );
+	bSizer35->Add( m_staticText67, 0, wxALIGN_CENTER|wxALL, 5 );
+
+	m_textCtrl_folderPath = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 300,-1 ), 0 );
+	m_textCtrl_folderPath->Enable( false );
+
+	bSizer35->Add( m_textCtrl_folderPath, 0, wxALL, 5 );
+
+	m_button_browseFolder = new wxButton( this, wxID_ANY, _("Browse"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer35->Add( m_button_browseFolder, 0, wxALL, 5 );
+
+
+	bSizer_Settings->Add( bSizer35, 1, wxEXPAND, 5 );
 
 	m_sdbSizer_OkCancel = new wxStdDialogButtonSizer();
 	m_sdbSizer_OkCancelOK = new wxButton( this, wxID_OK );
@@ -960,8 +969,14 @@ CfgDlgDef::CfgDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	bSizer_Settings->Fit( this );
 
 	this->Centre( wxBOTH );
+
+	// Connect Events
+	m_button_browseFolder->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( CfgDlgDef::OnButtonClick_BrowseFolderPath ), NULL, this );
 }
 
 CfgDlgDef::~CfgDlgDef()
 {
+	// Disconnect Events
+	m_button_browseFolder->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( CfgDlgDef::OnButtonClick_BrowseFolderPath ), NULL, this );
+
 }

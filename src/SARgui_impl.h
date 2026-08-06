@@ -28,8 +28,6 @@
 #ifndef _CALCULATORGUI_IMPL_H_
 #define _CALCULATORGUI_IMPL_H_
 
-// #include <cstdlib>
-// #include <cstdio>
 #ifdef WX_PRECOMP
 #include "wx/wx.h"
 #endif
@@ -41,6 +39,7 @@
 #include "tinyxml2.h"
 #include <wx/string.h>
 #include <wx/event.h>
+#include <wx/dirdlg.h>
 
 using namespace std;
 
@@ -76,10 +75,13 @@ public:
 class CfgDlg : public CfgDlgDef {
 public:
   CfgDlg(wxWindow* parent, wxWindowID id = wxID_ANY,
-         const wxString& title = _("SAR preferences"),
+         const wxString& title = _("SAR settings"),
          const wxPoint& pos = wxDefaultPosition,
          const wxSize& size = wxSize(-1, -1),
          long style = wxDEFAULT_DIALOG_STYLE);
+
+protected:
+  virtual void OnButtonClick_BrowseFolderPath(wxCommandEvent& event) override;
 };
 
 class Dlg : public DlgDef {

@@ -36,6 +36,25 @@ Dlg::Dlg(wxWindow* parent, wxWindowID id, const wxString& title,
 }
 
 
+/************************/
+/** Preferences Dialog **/
+/************************/
+void CfgDlg::OnButtonClick_BrowseFolderPath(wxCommandEvent& event)
+{
+  wxDirDialog dlg(
+      this,
+      _("Select output folder"),
+      m_textCtrl_folderPath->GetValue(),
+      wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST
+      );
+
+  if (dlg.ShowModal() == wxID_OK)
+  {
+    m_textCtrl_folderPath->SetValue(dlg.GetPath());
+  }
+}
+
+
 /*********************/
 /** Others wxEvents **/
 /*********************/
