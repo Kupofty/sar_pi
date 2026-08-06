@@ -115,6 +115,8 @@ private:
       double            m_ship_lon, m_ship_lat, m_cursor_lon, m_cursor_lat;
       bool              m_show_sar_icon;
       bool		m_show_sar;
+
+public:
       wxString          m_custom_folder_path;
       bool              m_use_custom_path;
 };
