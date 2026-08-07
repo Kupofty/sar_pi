@@ -259,7 +259,7 @@ void SAR_pi::OnToolbarToolCallback(int id) {
 void SAR_pi::ShowPreferencesDialog(wxWindow *parent) {
   CfgDlg *dialog = new CfgDlg(parent, wxID_ANY, _("SAR Preferences"),
                               wxPoint(m_route_dialog_x, m_route_dialog_y),
-                              wxDefaultSize, wxDEFAULT_DIALOG_STYLE);
+                              wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
 
   dialog->Fit();
   DimeWindow(dialog);

@@ -920,11 +920,11 @@ CfgDlgDef::CfgDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 
 	bSizer39->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText68 = new wxStaticText( this, wxID_ANY, _("Open recording folder:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText68 = new wxStaticText( this, wxID_ANY, _("Default GPX/RTZ save folder:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText68->Wrap( -1 );
 	bSizer39->Add( m_staticText68, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_radioBtn_defaultPath = new wxRadioButton( this, wxID_ANY, _("Default"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_radioBtn_defaultPath = new wxRadioButton( this, wxID_ANY, _("System default"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer39->Add( m_radioBtn_defaultPath, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_radioBtn_customPath = new wxRadioButton( this, wxID_ANY, _("Custom"), wxDefaultPosition, wxDefaultSize, 0 );
@@ -943,10 +943,10 @@ CfgDlgDef::CfgDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 	m_staticText67->Wrap( -1 );
 	bSizer35->Add( m_staticText67, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_textCtrl_folderPath = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 300,-1 ), 0 );
+	m_textCtrl_folderPath = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 350,-1 ), 0 );
 	m_textCtrl_folderPath->Enable( false );
 
-	bSizer35->Add( m_textCtrl_folderPath, 0, wxALL, 5 );
+	bSizer35->Add( m_textCtrl_folderPath, 1, wxALL, 5 );
 
 	m_button_browseFolder = new wxButton( this, wxID_ANY, _("Browse"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer35->Add( m_button_browseFolder, 0, wxALL, 5 );

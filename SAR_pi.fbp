@@ -8909,7 +8909,7 @@
         <property name="name">bSizer_Settings</property>
         <property name="orient">wxVERTICAL</property>
         <property name="permission">none</property>
-        <object class="sizeritem" expanded="true">
+        <object class="sizeritem" expanded="false">
           <property name="border">5</property>
           <property name="flag">wxEXPAND</property>
           <property name="proportion">1</property>
@@ -8961,7 +8961,7 @@
                 <property name="gripper">0</property>
                 <property name="hidden">0</property>
                 <property name="id">wxID_ANY</property>
-                <property name="label">Open recording folder:</property>
+                <property name="label">Default GPX/RTZ save folder:</property>
                 <property name="markup">0</property>
                 <property name="max_size"></property>
                 <property name="maximize_button">0</property>
@@ -9023,7 +9023,7 @@
                 <property name="gripper">0</property>
                 <property name="hidden">0</property>
                 <property name="id">wxID_ANY</property>
-                <property name="label">Default</property>
+                <property name="label">System default</property>
                 <property name="max_size"></property>
                 <property name="maximize_button">0</property>
                 <property name="maximum_size"></property>
@@ -9136,7 +9136,7 @@
           <property name="border">5</property>
           <property name="flag">wxEXPAND</property>
           <property name="proportion">1</property>
-          <object class="wxBoxSizer" expanded="false">
+          <object class="wxBoxSizer" expanded="true">
             <property name="minimum_size"></property>
             <property name="name">bSizer35</property>
             <property name="orient">wxHORIZONTAL</property>
@@ -9206,7 +9206,7 @@
             <object class="sizeritem" expanded="false">
               <property name="border">5</property>
               <property name="flag">wxALL</property>
-              <property name="proportion">0</property>
+              <property name="proportion">1</property>
               <object class="wxTextCtrl" expanded="false">
                 <property name="BottomDockable">1</property>
                 <property name="LeftDockable">1</property>
@@ -9253,7 +9253,7 @@
                 <property name="pos"></property>
                 <property name="resize">Resizable</property>
                 <property name="show">1</property>
-                <property name="size">300,-1</property>
+                <property name="size">350,-1</property>
                 <property name="style"></property>
                 <property name="subclass">; ; forward_declare</property>
                 <property name="toolbar_pane">0</property>
