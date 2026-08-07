@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-10 23:21+0100\n"
+"POT-Creation-Date: 2026-08-07 19:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -264,59 +264,47 @@ msgstr ""
 msgid "s"
 msgstr ""
 
-#: src/SARgui.cpp:918
-msgid "General settings"
+#: src/SARgui.cpp:923
+msgid "Default GPX/RTZ save folder:"
 msgstr ""
 
-#: src/SARgui.cpp:920
-msgid "Opacity"
+#: src/SARgui.cpp:927
+msgid "System default"
 msgstr ""
 
-#: src/SARgui.cpp:931
-msgid "CPU saving settings"
+#: src/SARgui.cpp:930
+msgid "Custom"
 msgstr ""
 
-#: src/SARgui.cpp:933
-msgid "Capture Ship Position"
+#: src/SARgui.cpp:942
+msgid "Custom path:"
 msgstr ""
 
-#: src/SARgui.cpp:935
-msgid "Leave ticked, so you can use ship's position"
+#: src/SARgui.cpp:951
+msgid "Browse"
 msgstr ""
 
-#: src/SARgui.cpp:939
-msgid "Capture Cursor Position"
-msgstr ""
-
-#: src/SARgui.cpp:941
-msgid "Leave ticked, so that you can use cursor position."
-msgstr ""
-
-#: src/SAR_pi.cpp:129
+#: src/SAR_pi.cpp:118
 msgid "Select SAR Datum Point"
 msgstr ""
 
-#: src/SAR_pi.cpp:178
-msgid "Search and Rescue Patterns"
+#: src/SAR_pi.cpp:260
+msgid "SAR Preferences"
 msgstr ""
 
-#: src/SAR_pi.cpp:181
-msgid "Creates GPX files with Search and Rescue patterns"
+#: src/SARgui_impl.cpp:46
+msgid "Select output folder"
 msgstr ""
 
-#: src/SAR_pi.cpp:283
-msgid "Route Preferences"
-msgstr ""
-
-#: src/SARgui_impl.cpp:311 src/SARgui_impl.cpp:325
+#: src/SARgui_impl.cpp:330 src/SARgui_impl.cpp:344
 msgid "Invalid input for conversion"
 msgstr ""
 
-#: src/SARgui_impl.cpp:311 src/SARgui_impl.cpp:325 src/SARgui_impl.cpp:976
+#: src/SARgui_impl.cpp:330 src/SARgui_impl.cpp:344 src/SARgui_impl.cpp:733
 msgid "Error"
 msgstr ""
 
-#: src/SARgui_impl.cpp:422
+#: src/SARgui_impl.cpp:441
 msgid ""
 "To copy the cursor location:\n"
 "\n"
@@ -325,35 +313,35 @@ msgid ""
 "cursor on the chart at the desired position, then press <CTRL>+S"
 msgstr ""
 
-#: src/SARgui_impl.cpp:686
-msgid "Save in RTZ format"
-msgstr ""
-
-#: src/SARgui_impl.cpp:858 src/SARgui_impl.cpp:869
+#: src/SARgui_impl.cpp:616 src/SARgui_impl.cpp:627
 msgid "RTZ for this pattern is not available"
 msgstr ""
 
-#: src/SARgui_impl.cpp:976
+#: src/SARgui_impl.cpp:733
 msgid "No Datum has been entered"
 msgstr ""
 
-#: src/SARgui_impl.cpp:982
+#: src/SARgui_impl.cpp:742
 msgid "Export SAR track GPX file as"
 msgstr ""
 
-#: src/SARgui_impl.cpp:1012
+#: src/SARgui_impl.cpp:778
 msgid "Error : invalid input range validation"
 msgstr ""
 
-#: src/SARgui_impl.cpp:1147
+#: src/SARgui_impl.cpp:907
 msgid "Error occurred, aborting SAR calc!"
 msgstr ""
 
-#: src/SARgui_impl.h:79 src/SARgui.h:229
-msgid "SAR preferences"
+#: src/SARgui_impl.cpp:2240
+msgid "Save in RTZ format"
 msgstr ""
 
-#: src/SARgui_impl.h:88
+#: src/SARgui_impl.h:78 src/SARgui.h:235
+msgid "SAR settings"
+msgstr ""
+
+#: src/SARgui_impl.h:90
 msgid "Search And Rescue"
 msgstr ""
 
