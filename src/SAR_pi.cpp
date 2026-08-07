@@ -174,11 +174,10 @@ bool SAR_pi::LoadConfig(void) {
   if (pConf) {
     pConf->SetPath(_T( "/Settings/SAR_pi" ));
     pConf->Read("ShowSARIcon", &m_show_sar_icon, true);
-
     m_route_dialog_x = pConf->Read(_T ( "DialogPosX" ), 20L);
     m_route_dialog_y = pConf->Read(_T ( "DialogPosY" ), 20L);
     m_custom_folder_path = pConf->Read(_T ( "CustomFolderPath" ), "");
-    m_use_custom_path = pConf->Read(_T ( "UseCustomFolderPath" ), false);
+    pConf->Read(_T ( "UseCustomFolderPath" ), &m_use_custom_path, false);
 
     if ((m_route_dialog_x < 0) || (m_route_dialog_x > m_display_width))
       m_route_dialog_x = 5;
@@ -199,7 +198,7 @@ bool SAR_pi::SaveConfig(void) {
     pConf->Write(_T ( "DialogPosX" ), m_route_dialog_x);
     pConf->Write(_T ( "DialogPosY" ), m_route_dialog_y);
     pConf->Write(_T ( "CustomFolderPath" ), m_custom_folder_path);
-    pConf->Write(_T ( "UseCustomFolderPath" ), m_use_custom_path);
+    pConf->Write(( "UseCustomFolderPath" ), m_use_custom_path);
     return true;
   }
   else
@@ -266,6 +265,7 @@ void SAR_pi::ShowPreferencesDialog(wxWindow *parent) {
   DimeWindow(dialog);
 
   dialog->m_textCtrl_folderPath->SetValue(m_custom_folder_path);
+  dialog->m_radioBtn_defaultPath->SetValue(!m_use_custom_path);
   dialog->m_radioBtn_customPath->SetValue(m_use_custom_path);
 
   //Update settings
