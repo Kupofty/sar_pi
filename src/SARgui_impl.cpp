@@ -738,6 +738,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
                             ? plugin->m_custom_folder_path
                             : wxString(wxEmptyString);
   wxString fileName;
+
   if (write_file) {
     wxFileDialog dlg(this, _("Export SAR track GPX file as"),
                      defaultDir,
@@ -757,13 +758,9 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
         this->m_NPortStbd->SetSelection(1);
         m_bitmap_trackln1->SetBitmap(_img_trackln1_port);
       }
-
     }
 
-    if(plugin->m_use_custom_path)
-      fileName = plugin->m_custom_folder_path;
-    else
-      fileName = dlg.GetPath();
+    fileName = dlg.GetPath();
 
     if (!user_canceled && fileName.IsEmpty()) {
       error_occurred = true;
@@ -2237,7 +2234,12 @@ void Dlg::AddChartRoute(wxString myRoute, wxString mySpeed, wxString myColor) {
 int Dlg::ExportRTZ(wxString routename) {
   wxString rtzFileName;
   wxString fileName;
-  wxFileDialog dlg(this, _("Save in RTZ format"), wxEmptyString, routename,
+
+  wxString defaultDir = plugin->m_use_custom_path
+                            ? plugin->m_custom_folder_path
+                            : wxString(wxEmptyString);
+
+  wxFileDialog dlg(this, _("Save in RTZ format"), defaultDir, routename,
                    _T("RTZ files (*.rtz)|*.rtz|All files (*.*)|*.*"),
                    wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 
