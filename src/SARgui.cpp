@@ -920,11 +920,11 @@ CfgDlgDef::CfgDlgDef( wxWindow* parent, wxWindowID id, const wxString& title, co
 
 	bSizer39->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText68 = new wxStaticText( this, wxID_ANY, _("Open recording folder:"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText68 = new wxStaticText( this, wxID_ANY, _("Default GPX/RTZ save folder:"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText68->Wrap( -1 );
 	bSizer39->Add( m_staticText68, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	m_radioBtn_defaultPath = new wxRadioButton( this, wxID_ANY, _("Default"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_radioBtn_defaultPath = new wxRadioButton( this, wxID_ANY, _("System default"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer39->Add( m_radioBtn_defaultPath, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_radioBtn_customPath = new wxRadioButton( this, wxID_ANY, _("Custom"), wxDefaultPosition, wxDefaultSize, 0 );
