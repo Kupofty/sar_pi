@@ -179,6 +179,12 @@ bool SAR_pi::LoadConfig(void) {
     m_custom_folder_path = pConf->Read(_T ( "CustomFolderPath" ), "");
     pConf->Read(_T ( "UseCustomFolderPath" ), &m_use_custom_path, false);
 
+    //Load NSEW dropdown states
+    m_NS_DDMMMmmm = pConf->Read(("NS_DDMMMMM"), 0L);
+    m_EW_DDMMMmmm = pConf->Read(("EW_DDMMMMM"), 0L);
+    m_NS_DDMMMSS = pConf->Read(("NS_DDMMSS"), 0L);
+    m_EW_DDMMMSS = pConf->Read(("EW_DDMMSS"), 0L);
+
     if ((m_route_dialog_x < 0) || (m_route_dialog_x > m_display_width))
       m_route_dialog_x = 5;
     if ((m_route_dialog_y < 0) || (m_route_dialog_y > m_display_height))
@@ -199,6 +205,18 @@ bool SAR_pi::SaveConfig(void) {
     pConf->Write(_T ( "DialogPosY" ), m_route_dialog_y);
     pConf->Write(_T ( "CustomFolderPath" ), m_custom_folder_path);
     pConf->Write(( "UseCustomFolderPath" ), m_use_custom_path);
+    pConf->Write(_T ( "CaptureCursor" ), m_bCaptureCursor);
+    pConf->Write(_T ( "CaptureShip" ), m_bCaptureShip);
+
+    //Save NSEW dropdown states
+    if (m_pDialog)
+    {
+      pConf->Write(_T ( "NS_DDMMMMM" ), m_pDialog->m_Lat1_NS1->GetSelection());
+      pConf->Write(_T ( "EW_DDMMMMM" ), m_pDialog->m_Lon1_EW1->GetSelection());
+      pConf->Write(_T ( "NS_DDMMSS" ), m_pDialog->m_Lat1_NS->GetSelection());
+      pConf->Write(_T ( "EW_DDMMSS" ), m_pDialog->m_Lon1_EW->GetSelection());
+    }
+
     return true;
   }
   else
@@ -234,7 +252,14 @@ void SAR_pi::OnToolbarToolCallback(int id) {
     m_pDialog = new Dlg(m_parent_window);
     m_pDialog->plugin = this;
     m_pDialog->Move(wxPoint(m_route_dialog_x, m_route_dialog_y));
+
+    //Apply config to UI
+    m_pDialog->m_Lat1_NS1->SetSelection(m_NS_DDMMMmmm);
+    m_pDialog->m_Lon1_EW1->SetSelection(m_EW_DDMMMmmm);
+    m_pDialog->m_Lat1_NS->SetSelection(m_NS_DDMMMSS);
+    m_pDialog->m_Lon1_EW->SetSelection(m_EW_DDMMMSS);
   }
+
   m_pDialog->Fit();
 
   // Toggle
