@@ -111,10 +111,9 @@ private:
       int               m_route_dialog_x, m_route_dialog_y,m_route_dialog_width,m_route_dialog_height;
       int               m_display_width, m_display_height;
       int               m_leftclick_tool_id;
-      bool              m_ShowHelp,m_bCaptureCursor,m_bCaptureShip;
       double            m_ship_lon, m_ship_lat, m_cursor_lon, m_cursor_lat;
       bool              m_show_sar_icon;
-      bool		      m_show_sar;
+      bool		m_show_sar;
       wxString          m_custom_folder_path;
       bool              m_use_custom_path;
       int               m_NS_DDMMMmmm;

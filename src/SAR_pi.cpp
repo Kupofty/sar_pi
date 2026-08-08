@@ -205,8 +205,6 @@ bool SAR_pi::SaveConfig(void) {
     pConf->Write(_T ( "DialogPosY" ), m_route_dialog_y);
     pConf->Write(_T ( "CustomFolderPath" ), m_custom_folder_path);
     pConf->Write(( "UseCustomFolderPath" ), m_use_custom_path);
-    pConf->Write(_T ( "CaptureCursor" ), m_bCaptureCursor);
-    pConf->Write(_T ( "CaptureShip" ), m_bCaptureShip);
 
     //Save NSEW dropdown states
     if (m_pDialog)
