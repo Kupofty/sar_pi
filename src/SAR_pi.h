@@ -99,8 +99,11 @@ public:
       double GetCursorLon(void) {return m_cursor_lon;}
       double GetCursorLat(void) {return m_cursor_lat;}
 
-      int m_position_menu_id;
-      wxBitmap m_panel_bitmap;
+public:
+      wxString          m_custom_folder_path;
+      bool              m_use_custom_path;
+      int               m_position_menu_id;
+      wxBitmap          m_panel_bitmap;
 
 private:
       wxFileConfig      *m_pconfig;
@@ -113,9 +116,7 @@ private:
       int               m_leftclick_tool_id;
       double            m_ship_lon, m_ship_lat, m_cursor_lon, m_cursor_lat;
       bool              m_show_sar_icon;
-      bool		m_show_sar;
-      wxString          m_custom_folder_path;
-      bool              m_use_custom_path;
+      bool              m_show_sar;
       int               m_NS_DDMMMmmm;
       int               m_EW_DDMMMmmm;
       int               m_NS_DDMMMSS;
