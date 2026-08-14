@@ -40,7 +40,7 @@
 #include <wx/string.h>
 #include <wx/event.h>
 #include <wx/dirdlg.h>
-//#include <wx/datetime.h>
+#include <wx/datetime.h>
 
 using namespace std;
 
