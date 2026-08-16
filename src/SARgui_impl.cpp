@@ -36,6 +36,25 @@ Dlg::Dlg(wxWindow* parent, wxWindowID id, const wxString& title,
 }
 
 
+/************************/
+/** Preferences Dialog **/
+/************************/
+void CfgDlg::OnButtonClick_BrowseFolderPath(wxCommandEvent& event)
+{
+  wxDirDialog dlg(
+      this,
+      _("Select output folder"),
+      m_textCtrl_folderPath->GetValue(),
+      wxDD_DEFAULT_STYLE | wxDD_DIR_MUST_EXIST
+      );
+
+  if (dlg.ShowModal() == wxID_OK)
+  {
+    m_textCtrl_folderPath->SetValue(dlg.GetPath());
+  }
+}
+
+
 /*********************/
 /** Others wxEvents **/
 /*********************/
@@ -720,9 +739,14 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
     return;
   }
 
+  wxString defaultDir = plugin->m_use_custom_path
+                            ? plugin->m_custom_folder_path
+                            : wxString(wxEmptyString);
   wxString fileName;
+
   if (write_file) {
-    wxFileDialog dlg(this, _("Export SAR track GPX file as"), wxEmptyString,
+    wxFileDialog dlg(this, _("Export SAR track GPX file as"),
+                     defaultDir,
                      defaultFileName,
                      _T("GPX files (*.gpx)|*.gpx|All files (*.*)|*.*"),
                      wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
@@ -742,6 +766,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
     }
 
     fileName = dlg.GetPath();
+
     if (!user_canceled && fileName.IsEmpty()) {
       error_occurred = true;
       if (dbg) printf("Error : Empty Path\n");
@@ -2214,7 +2239,12 @@ void Dlg::AddChartRoute(wxString myRoute, wxString mySpeed, wxString myColor) {
 int Dlg::ExportRTZ(wxString routename) {
   wxString rtzFileName;
   wxString fileName;
-  wxFileDialog dlg(this, _("Save in RTZ format"), wxEmptyString, routename,
+
+  wxString defaultDir = plugin->m_use_custom_path
+                            ? plugin->m_custom_folder_path
+                            : wxString(wxEmptyString);
+
+  wxFileDialog dlg(this, _("Save in RTZ format"), defaultDir, routename,
                    _T("RTZ files (*.rtz)|*.rtz|All files (*.*)|*.*"),
                    wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 

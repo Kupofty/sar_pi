@@ -70,21 +70,11 @@ SAR_pi::SAR_pi(void *ppimgr)
   m_show_sar = false;
 }
 
-SAR_pi::~SAR_pi() {
+SAR_pi::~SAR_pi()
+{
+  SaveConfig();
+
   delete _img_rescue;
-
-  if (m_pDialog) {
-    wxFileConfig *pConf = GetOCPNConfigObject();
-
-    if (pConf) {
-      pConf->SetPath(_T ( "/Settings/SAR_pi" ));
-      pConf->Write(_T ( "Opacity" ), m_iOpacity);
-      pConf->Write(_T ( "DialogPosX" ), m_route_dialog_x);
-      pConf->Write(_T ( "DialogPosY" ), m_route_dialog_y);
-      pConf->Write(_T ( "CaptureCursor" ), m_bCaptureCursor);
-      pConf->Write(_T ( "CaptureShip" ), m_bCaptureShip);
-    }
-  }
 }
 
 int SAR_pi::Init(void) {
@@ -131,7 +121,7 @@ int SAR_pi::Init(void) {
   m_pDialog = NULL;
 
   return (WANTS_CURSOR_LATLON | WANTS_TOOLBAR_CALLBACK | INSTALLS_TOOLBAR_TOOL |
-          WANTS_NMEA_EVENTS | WANTS_CONFIG);
+          WANTS_NMEA_EVENTS | WANTS_CONFIG | WANTS_PREFERENCES);
 }
 
 bool SAR_pi::DeInit(void) {
@@ -183,13 +173,11 @@ bool SAR_pi::LoadConfig(void) {
 
   if (pConf) {
     pConf->SetPath(_T( "/Settings/SAR_pi" ));
-    pConf->Read(_T ( "Opacity" ), &m_iOpacity, 255);
     pConf->Read("ShowSARIcon", &m_show_sar_icon, true);
-    // pConf->Read dialog->m_cpConnectorColor->SetColour(m_sConnectorColor);
     m_route_dialog_x = pConf->Read(_T ( "DialogPosX" ), 20L);
     m_route_dialog_y = pConf->Read(_T ( "DialogPosY" ), 20L);
-    m_bCaptureCursor = pConf->Read(_T ( "CaptureCursor" ), true);
-    m_bCaptureShip = pConf->Read(_T ( "CaptureShip" ), true);
+    m_custom_folder_path = pConf->Read(_T ( "CustomFolderPath" ), "");
+    pConf->Read(_T ( "UseCustomFolderPath" ), &m_use_custom_path, false);
 
     //Load NSEW dropdown states
     m_NS_DDMMMmmm = pConf->Read(("NS_DDMMMMM"), 0L);
@@ -209,14 +197,14 @@ bool SAR_pi::LoadConfig(void) {
 bool SAR_pi::SaveConfig(void) {
   wxFileConfig *pConf = (wxFileConfig *)m_pconfig;
 
-  if (pConf) {
+  if (pConf)
+  {
     pConf->SetPath(_T ( "/Settings/SAR_pi" ));
-    pConf->Write(_T ( "Opacity" ), m_iOpacity);
     pConf->Write("ShowSARIcon", m_show_sar_icon);
     pConf->Write(_T ( "DialogPosX" ), m_route_dialog_x);
     pConf->Write(_T ( "DialogPosY" ), m_route_dialog_y);
-    pConf->Write(_T ( "CaptureCursor" ), m_bCaptureCursor);
-    pConf->Write(_T ( "CaptureShip" ), m_bCaptureShip);
+    pConf->Write(_T ( "CustomFolderPath" ), m_custom_folder_path);
+    pConf->Write(( "UseCustomFolderPath" ), m_use_custom_path);
 
     //Save NSEW dropdown states
     if (m_pDialog)
@@ -228,7 +216,8 @@ bool SAR_pi::SaveConfig(void) {
     }
 
     return true;
-  } else
+  }
+  else
     return false;
 }
 
@@ -291,22 +280,24 @@ void SAR_pi::OnToolbarToolCallback(int id) {
 }
 
 void SAR_pi::ShowPreferencesDialog(wxWindow *parent) {
-  CfgDlg *dialog = new CfgDlg(parent, wxID_ANY, _("Route Preferences"),
+  CfgDlg *dialog = new CfgDlg(parent, wxID_ANY, _("SAR Preferences"),
                               wxPoint(m_route_dialog_x, m_route_dialog_y),
-                              wxDefaultSize, wxDEFAULT_DIALOG_STYLE);
-  dialog->Fit();
-  wxColour cl;
-  DimeWindow(dialog);
-  dialog->m_sOpacity->SetValue(m_iOpacity);
-  dialog->m_CaptureCursor->SetValue(m_bCaptureCursor);
-  dialog->m_CaptureShip->SetValue(m_bCaptureShip);
+                              wxDefaultSize, wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER);
 
+  dialog->Fit();
+  DimeWindow(dialog);
+
+  dialog->m_textCtrl_folderPath->SetValue(m_custom_folder_path);
+  dialog->m_radioBtn_defaultPath->SetValue(!m_use_custom_path);
+  dialog->m_radioBtn_customPath->SetValue(m_use_custom_path);
+
+  //Update settings
   if (dialog->ShowModal() == wxID_OK) {
-    m_iOpacity = dialog->m_sOpacity->GetValue();
-    m_bCaptureCursor = dialog->m_CaptureCursor->GetValue();
-    m_bCaptureShip = dialog->m_CaptureCursor->GetValue();
+    m_use_custom_path = dialog->m_radioBtn_customPath->GetValue();
+    m_custom_folder_path = dialog->m_textCtrl_folderPath->GetValue();
     SaveConfig();
   }
+
   delete dialog;
   dialog = NULL;
 }
